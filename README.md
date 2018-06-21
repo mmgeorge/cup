@@ -1,2 +1,2 @@
 # Cup 
-## A project starter for Common Lisp
+A project starter for Common Lisp
