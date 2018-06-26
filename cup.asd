@@ -9,3 +9,4 @@
 
 (asdf:register-system-packages :unix-opts '(:unix-opts))
 (asdf:register-system-packages :cl-ppcre '(:cl-ppcre))
+(asdf:register-system-packages :esrap '(:esrap))
