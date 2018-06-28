@@ -5,6 +5,7 @@
   ;(:import-from :cup/core/traits/persist #:save-instance)
   (:import-from :cup/core/shadow-system #:make-shadow-system #:save-instance #:register)
   (:import-from :cup/core/shadow-package #:make-shadow-package)
+  (:import-from :cup/core/parser #:parse-source)
   (:export #:main))
 
 (in-package :cup/core/main)
@@ -33,8 +34,16 @@
     (format t "Adding package ~a" package-name)
     (register (make-shadow-package package-name) (bound-system))))
 
+(defvar *bound-system* nil)
+
+(defun find-system ()
+  (let ((path "test.asd"))
+    (with-open-file (infile path)
+      (parse-source infile))))
+
 (defun bound-system ()
-  (make-shadow-system "hello" "Matt" "Matt" "None" "No desc"))
+  (or *bound-system* (setf *bound-system* (find-system))))
+
 
 (defun prompt (description)
   (format *query-io* "~a " description)
