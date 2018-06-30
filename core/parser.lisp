@@ -16,8 +16,8 @@
     (describe system)
     packages))
 
-
 ;; Parsing rules
+;; Todo: Improve these to be less sad :(
 
 (esrap:defrule whitespace (+ (or #\space #\tab #\newline)))
 
