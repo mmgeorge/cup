@@ -1,12 +1,17 @@
-(asdf:defsystem :cup
-  :version "0.1.0"
-  :author "Matt George"
-  :maintainer "Matt George"
-  :license "none"
-  :description "Project starter for common lisp"
-  :class :package-inferred-system
-  :depends-on (:cup/exports))
 
-(asdf:register-system-packages :unix-opts '(:unix-opts))
-(asdf:register-system-packages :cl-ppcre '(:cl-ppcre))
-(asdf:register-system-packages :esrap '(:esrap))
+(ASDF/PARSE-DEFSYSTEM:DEFSYSTEM :CUP
+  :AUTHOR
+  "Matt George"
+  :MAINTAINER
+  "Matt George"
+  :LICENSE
+  "none"
+  :DESCRIPTION
+  "Project starter for common lisp"
+  :CLASS
+  :PACKAGE-INFERRED-SYSTEM
+  :DEPENDS-ON
+  (:CUP/EXPORTS))
+(ASDF/PACKAGE-INFERRED-SYSTEM:REGISTER-SYSTEM-PACKAGES :UNIX-OPTS '(:UNIX-OPTS))
+(ASDF/PACKAGE-INFERRED-SYSTEM:REGISTER-SYSTEM-PACKAGES :CL-PPCRE '(:CL-PPCRE))
+(ASDF/PACKAGE-INFERRED-SYSTEM:REGISTER-SYSTEM-PACKAGES :ESRAP '(:ESRAP))

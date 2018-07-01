@@ -1,7 +1,17 @@
 (defpackage :cup/core/shadow-system
   (:use :cl)
-  (:import-from :cup/core/shadow-package #:shadow-package #:make-shadow-package)
-  (:export #:make-shadow-system #:save-instance))
+  (:import-from :cup/core/shadow-package #:shadow-package
+                #:make-shadow-package
+                #:shadow-package-name)
+  (:export #:make-shadow-system
+           #:shadow-system-name
+           #:shadow-system-author
+           #:shadow-system-maintainer
+           #:shadow-system-license
+           #:shadow-system-description
+           #:shadow-system-packages
+           #:save-instance
+           #:register))
 
 (in-package :cup/core/shadow-system)
 
@@ -51,5 +61,8 @@
 
 
 (defmethod register ((package shadow-package) (system shadow-system))
-  (package-add package system)
-  (describe system))
+  (let ((registered (shadow-system-packages system)))
+    (if (some (lambda (p)(eq (shadow-package-name p) (shadow-package-name package))) registered)
+        (format t "Package ~a has already been added~%" (shadow-package-name package))
+        (package-add package system)))
+  system)

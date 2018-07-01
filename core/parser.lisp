@@ -48,9 +48,9 @@
                          (ignore colon))
                 (concatenate 'string ":" key)))
 
-(esrap:defrule keyed-args (+ keyed-arg) (:identity t))
+(esrap:defrule keyed-args (+ (or key keyed-arg)) (:identity t))
 
-(esrap:defrule defsystem (and sexp-begin "asdf:defsystem" keyed-args sexp-end)
+(esrap:defrule defsystem (and sexp-begin "asdf:defsystem" key keyed-args sexp-end)
   (:destructure (s-begin token keys s-end)
                 (declare (ignore s-begin)
                          (ignore s-end))
